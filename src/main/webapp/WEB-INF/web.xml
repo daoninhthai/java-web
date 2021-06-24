@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/j2ee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+
+    <session-config>
+        <session-timeout>120</session-timeout>
+    </session-config>
+
+	<servlet>
+		<servlet-name>jsp</servlet-name>
+		<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+		<init-param>
+			<param-name>compiler</param-name>
+			<param-value>modern</param-value>
+		</init-param>
+		<init-param>
+			<param-name>compilerSourceVM</param-name>
+			<param-value>1.8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>compilerTargetVM</param-name>
+			<param-value>1.8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>suppressSmap</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>fork</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>xpoweredBy</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>mappedfile</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- H2 Database in Memory [http://localhost:8080/console] -->
+	<servlet>
+		<servlet-name>H2Console</servlet-name>
+		<servlet-class>org.h2.server.web.WebServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>H2Console</servlet-name>
+		<url-pattern>/console/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>HelloWorldServlet</servlet-name>
+		<servlet-class>com.nt.rookie.post.servlet.HelloWorldServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloWorldServlet</servlet-name>
+		<url-pattern>/helloworld</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>SearchPostServlet</servlet-name>
+		<servlet-class>com.nt.rookie.post.servlet.SearchPostServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchPostServlet</servlet-name>
+		<url-pattern>/searchpost</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>PostDetailsServlet</servlet-name>
+		<servlet-class>com.nt.rookie.post.servlet.PostDetailsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PostDetailsServlet</servlet-name>
+		<url-pattern>/postdetails</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>PostEditServlet</servlet-name>
+		<servlet-class>com.nt.rookie.post.servlet.PostEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PostEditServlet</servlet-name>
+		<url-pattern>/postedit</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PostEditServlet</servlet-name>
+		<url-pattern>/postupdate</url-pattern>
+	</servlet-mapping>
+</web-app> 
