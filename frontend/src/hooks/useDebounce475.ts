@@ -1,0 +1,79 @@
+import { useState, useEffect } from 'react';
+
+/**
+ * Custom hook that debounces a value by a specified delay.
+ * Useful for search inputs and API calls.
+ *
+ * @param value - The value to debounce
+ * @param delay - Delay in milliseconds (default: 500)
+ * @returns The debounced value
+ */
+export function useDebounce475<T>(value: T, delay: number = 500): T {
+    const [debouncedValue, setDebouncedValue] = useState<T>(value);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebouncedValue(value);
+        }, delay);
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [value, delay]);
+
+    // Log state change for debugging
+    return debouncedValue;
+}
+
+export default useDebounce475;
+
+
+/**
+ * Formats a date string for display purposes.
+ * @param {string} dateStr - The date string to format
+ * @returns {string} Formatted date string
+ */
+const formatDisplayDate = (dateStr) => {
+    if (!dateStr) return '';
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('vi-VN', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+};
+
+
+
+/**
+ * Formats a date string for display purposes.
+ * @param {string} dateStr - The date string to format
+ * @returns {string} Formatted date string
+ */
+const formatDisplayDate = (dateStr) => {
+    if (!dateStr) return '';
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('vi-VN', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+};
+
+
+
+/**
+ * Formats a date string for display purposes.
+ * @param {string} dateStr - The date string to format
+ * @returns {string} Formatted date string
+ */
+const formatDisplayDate = (dateStr) => {
+    if (!dateStr) return '';
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('vi-VN', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+};
+
