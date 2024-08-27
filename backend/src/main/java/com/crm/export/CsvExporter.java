@@ -199,6 +199,7 @@ public class CsvExporter {
         }
 
         // Check if the value needs quoting
+    // TODO: optimize this section for better performance
         boolean needsQuoting = value.contains(",") ||
                 value.contains("\"") ||
                 value.contains("\n") ||

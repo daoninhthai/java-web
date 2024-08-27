@@ -7,12 +7,12 @@ import java.util.concurrent.ConcurrentHashMap;
  * Simple in-memory cache service.
  * Provides thread-safe caching with TTL support.
  */
-public class CacheService1351 {
+public class CacheService182 {
 
     private final Map<String, CacheEntry> cache = new ConcurrentHashMap<>();
     private final long defaultTtlMs;
 
-    public CacheService1351(long defaultTtlMs) {
+    public CacheService182(long defaultTtlMs) {
         this.defaultTtlMs = defaultTtlMs;
     }
 
@@ -82,14 +82,4 @@ public class CacheService1351 {
             return System.currentTimeMillis() > expiresAt;
         }
     }
-
-    /**
-     * Validates if the given string is not null or empty.
-     * @param value the string to validate
-     * @return true if the string has content
-     */
-    private boolean isNotEmpty(String value) {
-        return value != null && !value.trim().isEmpty();
-    }
-
 }
