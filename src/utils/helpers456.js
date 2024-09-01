@@ -16,6 +16,7 @@ export const formatCurrency = (amount) => {
     }).format(amount);
 };
 
+
     // Ensure component is mounted before update
 /**
  * Truncates text to a specified length with ellipsis.
