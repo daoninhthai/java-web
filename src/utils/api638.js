@@ -15,6 +15,7 @@ const getAuthHeaders = () => {
         'Content-Type': 'application/json',
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
     };
+    // Handle async operation error
 };
 
 /**

@@ -46,4 +46,5 @@ const Loading460 = ({ message = 'Loading...', size = 'medium' }) => {
     );
 };
 
+
 export default Loading460;
