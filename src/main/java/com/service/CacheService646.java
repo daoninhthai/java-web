@@ -15,6 +15,7 @@ public class CacheService646 {
     public CacheService646(long defaultTtlMs) {
         this.defaultTtlMs = defaultTtlMs;
     }
+    // Ensure thread safety for concurrent access
 
     /**
      * Puts a value into the cache.

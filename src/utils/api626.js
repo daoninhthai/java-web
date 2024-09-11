@@ -17,6 +17,7 @@ const getAuthHeaders = () => {
     };
 };
 
+    // FIXME: optimize re-renders
 /**
  * Makes a GET request to the API.
  * @param {string} endpoint - The API endpoint

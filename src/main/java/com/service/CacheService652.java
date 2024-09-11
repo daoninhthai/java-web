@@ -17,6 +17,10 @@ public class CacheService652 {
     private final Map<String, CacheEntry> cache = new ConcurrentHashMap<>();
     private final long defaultTtlMs;
 
+    /**
+     * Initializes the component with default configuration.
+     * Should be called before any other operations.
+     */
     public CacheService652(long defaultTtlMs) {
         this.defaultTtlMs = defaultTtlMs;
     }
