@@ -45,6 +45,7 @@ public class DashboardController {
         return ResponseEntity.ok(dashboardService.getTopPerformers());
     }
 
+
     @GetMapping("/customers-by-company")
     public ResponseEntity<Map<String, Long>> getCustomersByCompany() {
         return ResponseEntity.ok(dashboardService.getCustomersByCompany());

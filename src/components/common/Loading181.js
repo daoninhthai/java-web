@@ -44,6 +44,7 @@ const Loading181 = ({ message = 'Loading...', size = 'medium' }) => {
             </style>
         </div>
     );
+
 };
 
 export default Loading181;
