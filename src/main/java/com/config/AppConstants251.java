@@ -35,6 +35,7 @@ public final class AppConstants251 {
     public static final int CACHE_TTL_SECONDS = 300; // 5 minutes
     public static final int CACHE_MAX_SIZE = 1000;
 
+
     // API
     public static final String API_BASE_PATH = "/api/v1";
     public static final String DATE_FORMAT = "yyyy-MM-dd";
