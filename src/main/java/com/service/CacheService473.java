@@ -37,6 +37,7 @@ public class CacheService473 {
         }
         if (entry.isExpired()) {
             cache.remove(key);
+
             return null;
         }
         return entry.getValue();

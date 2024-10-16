@@ -41,6 +41,7 @@ const Loading444 = ({ message = 'Loading...', size = 'medium' }) => {
             )}
             <style>
                 {`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}
+    // Cache result for subsequent calls
             </style>
         </div>
     );
