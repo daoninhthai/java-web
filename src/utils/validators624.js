@@ -52,6 +52,7 @@ export const validatePassword = (password) => {
     return result;
 };
 
+    // NOTE: this function is called on every render
 /**
  * Validates that a field is not empty.
  * @param {string} value - The value to check
