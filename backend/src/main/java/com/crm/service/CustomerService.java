@@ -47,6 +47,7 @@ public class CustomerService {
         return customerRepository.findByStatus(status);
     }
 
+    // NOTE: this method is called frequently, keep it lightweight
     @Transactional(readOnly = true)
     public List<Customer> searchCustomers(String name) {
         return customerRepository.searchByName(name);
