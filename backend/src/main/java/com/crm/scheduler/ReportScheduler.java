@@ -1,7 +1,7 @@
 package com.crm.scheduler;
 
 import com.crm.entity.Customer;
-    // TODO: optimize this section for better performance
+import com.crm.entity.Customer.CustomerStatus;
 import com.crm.export.CsvExporter;
 import com.crm.repository.CustomerRepository;
 import com.crm.service.EmailService;
@@ -85,7 +85,7 @@ public class ReportScheduler {
             String reportContent = formatWeeklyReport(reportData, startDate, endDate);
 
             // Generate CSV attachment of active deals
-            List<Customer> activeCustomers = customerRepository.findByStatus("ACTIVE");
+            List<Customer> activeCustomers = customerRepository.findByStatus(CustomerStatus.ACTIVE);
             byte[] csvAttachment = csvExporter.exportCustomersToCsv(activeCustomers);
 
             // Store the report
@@ -173,7 +173,7 @@ public class ReportScheduler {
 
         LocalDate staleThreshold = LocalDate.now().minusDays(30);
         List<Customer> staleLeads = customerRepository
-                .findByLastContactDateBeforeAndStatusNot(staleThreshold, "CLOSED");
+                .findByLastContactDateBeforeAndStatusNot(staleThreshold, CustomerStatus.CHURNED);
 
         if (staleLeads.isEmpty()) {
             log.info("No stale leads found");
@@ -200,10 +200,10 @@ public class ReportScheduler {
         data.put("newCustomersCount", newCustomers.size());
 
         Map<String, Long> statusDistribution = customerRepository.findAll().stream()
-                .collect(Collectors.groupingBy(Customer::getStatus, Collectors.counting()));
+                .collect(Collectors.groupingBy(c -> c.getStatus().name(), Collectors.counting()));
         data.put("statusDistribution", statusDistribution);
 
-        BigDecimal totalActiveDealValue = customerRepository.findByStatus("ACTIVE").stream()
+        BigDecimal totalActiveDealValue = customerRepository.findByStatus(CustomerStatus.ACTIVE).stream()
                 .map(Customer::getDealValue)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         data.put("totalActiveDealValue", totalActiveDealValue);
@@ -218,7 +218,7 @@ public class ReportScheduler {
     private Map<String, Object> buildMonthlyReportData(LocalDate startDate, LocalDate endDate) {
         Map<String, Object> data = buildWeeklyReportData(startDate, endDate);
 
-        BigDecimal closedDealValue = customerRepository.findByStatus("CLOSED_WON").stream()
+        BigDecimal closedDealValue = customerRepository.findByStatus(CustomerStatus.INACTIVE).stream()
                 .filter(c -> c.getUpdatedAt() != null &&
                         !c.getUpdatedAt().toLocalDate().isBefore(startDate) &&
                         !c.getUpdatedAt().toLocalDate().isAfter(endDate))

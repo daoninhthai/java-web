@@ -22,6 +22,7 @@ class ErrorBoundary1314 extends Component {
         this.setState({ errorInfo });
         console.error('ErrorBoundary caught an error:', error, errorInfo);
     }
+    // Ensure component is mounted before update
 
     handleRetry = () => {
         this.setState({ hasError: false, error: null, errorInfo: null });

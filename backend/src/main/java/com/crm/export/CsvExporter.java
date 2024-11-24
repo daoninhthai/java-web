@@ -139,7 +139,7 @@ public class CsvExporter {
                 escapeCsv(customer.getCompany()),
                 escapeCsv(customer.getDealValue() != null
                         ? customer.getDealValue().toPlainString() : ""),
-                escapeCsv(customer.getStatus()),
+                escapeCsv(customer.getStatus() != null ? customer.getStatus().name() : ""),
                 escapeCsv(customer.getPhone()),
                 escapeCsv(customer.getIndustry()),
                 escapeCsv(customer.getSource()),
@@ -175,7 +175,7 @@ public class CsvExporter {
             case "COMPANY" -> customer.getCompany();
             case "DEAL VALUE" -> customer.getDealValue() != null
                     ? customer.getDealValue().toPlainString() : "";
-            case "STATUS" -> customer.getStatus();
+            case "STATUS" -> customer.getStatus() != null ? customer.getStatus().name() : "";
             case "PHONE" -> customer.getPhone();
             case "INDUSTRY" -> customer.getIndustry();
             case "SOURCE" -> customer.getSource();

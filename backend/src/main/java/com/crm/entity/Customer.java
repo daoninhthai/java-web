@@ -7,6 +7,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -62,6 +63,15 @@ public class Customer {
     @Column(name = "notes", columnDefinition = "TEXT")
     private String notes;
 
+    @Column(name = "industry")
+    private String industry;
+
+    @Column(name = "source")
+    private String source;
+
+    @Column(name = "deal_value", precision = 12, scale = 2)
+    private BigDecimal dealValue;
+
     @Column(name = "last_contact_date")
     private LocalDate lastContactDate;
 
@@ -84,6 +94,13 @@ public class Customer {
      */
     public String getFullName() {
         return firstName + " " + lastName;
+    }
+
+    /**
+     * Alias for getFullName() for compatibility.
+     */
+    public String getName() {
+        return getFullName();
     }
 
     /**

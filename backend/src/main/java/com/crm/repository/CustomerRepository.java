@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -39,6 +40,12 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     List<Customer> findRecentCustomers();
 
     boolean existsByEmail(String email);
+
+    List<Customer> findByLastContactDateBeforeAndStatusNot(LocalDate date, CustomerStatus status);
+
+    List<Customer> findByCreatedAtBetween(LocalDateTime start, LocalDateTime end);
+
+    List<Customer> findByLastContactDateBetween(LocalDate start, LocalDate end);
 
     /**
      * Validates that the given value is within the expected range.
